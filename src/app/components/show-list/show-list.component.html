@@ -1,0 +1,39 @@
+           
+<div *ngIf="showCategorizedList && showCategorizedList.length > 0">
+    <app-show-search (searchCriteria)="search($event)"></app-show-search>
+
+    <div *ngFor="let genres of showCategorizedList">
+        <div *ngIf="genres.shows.length>0" >
+            <div class="row d-flex justify-content-md-start">
+                <div class="col-md-2">
+                    <h2 class="pt-md-5 pt-sm-5">
+                        {{genres.genre}}
+                    </h2>
+                </div>    
+            </div>
+            <div class="row d-flex justify-content-md-start border-shade">
+                <div *ngFor="let show of genres.shows; index as i" class="col-md-2 mt-md-1 mb-md-0 mt-sm-1 mb-sm-0">
+                    <mat-card *ngIf="i<=4">    
+                        <img mat-card-image src="{{show?.image?.medium}}" alt="Photo of {{show?.name}}">
+                        <mat-card-content>
+                            <span>
+                                <b>{{show?.name}}</b>
+                            </span>
+                        </mat-card-content>
+                        <mat-card-actions class="background-shade">   
+                            <mat-icon>star</mat-icon> <span>{{show?.rating?.average}}</span>
+                            <button mat-button  routerLink="/showDetails/{{ show?.id }}">Details</button>
+                        </mat-card-actions>
+                    </mat-card> 
+                   
+                </div>    
+            </div>
+            <div *ngIf="genres.shows.length>4" class="row d-flex justify-content-md-end justify-content-sm-end">
+                <button mat-button routerLink="/showMoreList/{{genres.genre}}">View More..</button>
+            </div> 
+        </div>                 
+    </div>    
+</div>
+<div *ngIf="showCategorizedList.length <= 0" class="row d-flex justify-content-md-around p-5">
+    <app-show-error></app-show-error>
+</div>

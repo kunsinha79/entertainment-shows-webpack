@@ -1,0 +1,21 @@
+<div *ngIf="showDetails!==undefined" class="row d-flex justify-align-md-around p-5">    
+    <img class="col-md-3 img-fluid" src="{{showDetails.image.medium}}" alt="Photo of {{showDetails.name}}">
+    <div class="m-1 col-md-4">
+        <p>
+            <strong>
+                {{showDetails.name | uppercase}}
+            </strong>
+        </p>
+        <p class="text-justify" [innerHTML]="showDetails.summary"></p>
+        <p><a href="{{showDetails.officialSite}}">{{showDetails.officialSite}}</a></p>
+    </div>  
+    <div class="m-1 col-md-4">
+        <p class='background-shade'>Language: {{showDetails.language}}</p>
+        
+        <p class='background-shade'>Genres: {{showDetails.genres}}</p>
+        <p class='background-shade'>
+            Rating: {{showDetails.rating.average}} <mat-icon>star</mat-icon>
+        </p>
+
+    </div>          
+</div>

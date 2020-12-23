@@ -1,0 +1,16 @@
+<header>
+  <mat-toolbar color="primary">
+    <a mat-icon-button *ngIf="isHome()" routerLink='/'>
+      <mat-icon>home</mat-icon>
+    </a>
+
+    <a *ngIf="!isHome()" mat-flat-button color="primary" routerLink='/showList'>
+      <mat-icon>keyboard_backspace</mat-icon>
+    </a>
+    Entertainment Shows
+  </mat-toolbar>
+</header>
+
+<div class="container content"> 
+  <router-outlet></router-outlet>
+</div>
